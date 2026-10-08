@@ -2,7 +2,7 @@
 
 ## Integrantes do Grupo
 * Rodrigo Alves Serra - Matricula: 2024090693
-* Nome do Aluno 2 - Matricula: XXXXXXXXX
+* Felipe Maia - Matricula: 2025423874
 
 ## Descrição do Problema
 O projeto consiste no desenvolvimento do famoso jogo de cartas  Paciência em C++. O objetivo principal é organizar um baralho completo de 52 cartas em quatro pilhas de fundação (uma para cada naipe), ordenadas de forma crescente do Ás ao Rei. O jogador precisa manipular as cartas distribuídas em sete colunas no tabuleiro, respeitando regras de ordenação decrescente e alternância de cores, além de utilizar o monte de compra quando necessário.
