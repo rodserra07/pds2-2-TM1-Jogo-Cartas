@@ -9,7 +9,7 @@
  */
 class Tableau {
 private:
-    std::vector<PilhaCartas> _colunas;
+    std::vector<Pilha> _colunas;
 
 public:
     Tableau();
@@ -36,7 +36,7 @@ public:
      */
     void revelar_topo(int idx_coluna);
 
-    PilhaCartas& get_coluna(int idx);
+    Pilha& get_coluna(int idx);
 };
 
 #endif

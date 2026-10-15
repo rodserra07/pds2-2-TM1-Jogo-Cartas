@@ -1,7 +1,7 @@
 #ifndef FUNDACAO_HPP
 #define FUNDACAO_HPP
 
-#include "PilhaCartas.hpp"
+#include "Pilha.hpp"
 #include <vector>
 
 /**
@@ -9,7 +9,7 @@
  */
 class Fundacao {
 private:
-    std::vector<PilhaCartas> _pilhas_naipe; 
+    std::vector<Pilha> _pilhas_naipe; 
 
 public:
     Fundacao();
@@ -17,7 +17,7 @@ public:
     /**
      * @brief Verifica se a carta é valida para entrar na pulha.
      * @param c Carta a ser inserida.
-     * @return true se a pilha for vazia e for um Ás ou se a carta tiver mesmo naipe e valor maior que a do topo
+     * @return  @return true se a pilha estiver vazia e a carta for um Ás, ou se tiver o mesmo naipe e valor igual ao do topo + 1.
      */
     bool validar_insercao(const Carta& c) const;
 

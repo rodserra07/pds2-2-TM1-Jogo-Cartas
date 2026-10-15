@@ -7,13 +7,13 @@
 /**
  * @brief Manipular as pilhas de cartas.
  */
-class PilhaCartas {
+class Pilha {
 protected:
     std::vector<Carta> _cartas; 
 
 public:
-    PilhaCartas() = default;
-    virtual ~PilhaCartas() = default;
+    Pilha() = default;
+    virtual ~Pilha() = default;
 
     /**
      * @brief Coloca uma carta no topo da pilha.

@@ -10,18 +10,18 @@
 /**
  * @brief Classe que vai sustentar todo o fluxo da paciencia 
  */
-class JogoPaciencia {
+class Paciencia {
 private:
     Tableau _tableau;
     Fundacao _fundacao;
-    PilhaCartas _estoque;
-    PilhaCartas _descarte;
+    Pilha _estoque;
+    Pilha _descarte;
     GerenciadorMovimento _gerenciador_undo;
     int _pontuacao;
     int _tempo_decorrido;
 
 public:
-    JogoPaciencia();
+    Paciencia();
 
     /**
      * @brief Inicia o baralho, embaralha ele e distribui as cartinha
