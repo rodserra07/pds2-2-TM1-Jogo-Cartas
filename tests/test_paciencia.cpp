@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include "Paciencia.hpp"
+#include "paciencia.hpp"
 #include <cstdio> 
 
 TEST_CASE("startando a partida do zero") {

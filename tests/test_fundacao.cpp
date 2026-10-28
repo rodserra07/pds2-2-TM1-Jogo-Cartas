@@ -8,17 +8,17 @@ TEST_CASE("testando se a proteção da funtação ta funfando") {
   Carta tres(3, Naipe::ESPADAS);
  Carta as_outronaipe{1, Naipe::OUROS};
 
-  CHECK_FALSE(f.validar_insercao(dois));
-   CHECK(!f.validar_insercao(tres));
-  CHECK(f.validar_insercao(as));
+  CHECK_FALSE(f.valide_insira(dois));
+   CHECK(!f.valide_insira(tres));
+  CHECK(f.valide_insira(as));
 
-    f.inserir_carta(as);
-  CHECK(f.validar_insercao(dois));
- CHECK_FALSE(f.validar_insercao(tres));
-   CHECK_FALSE(f.validar_insercao(as_outronaipe));
+    f.insira_carta(as);
+  CHECK(f.valide_insira(dois));
+ CHECK_FALSE(f.valide_insira(tres));
+   CHECK(f.valide_insira(as_outronaipe));
 }
 
 TEST_CASE("checando booyah e o jogo acabou") {
   Fundacao f;
-   CHECK(!f.jogo_ganho());
+   CHECK(!f.gg());
 }

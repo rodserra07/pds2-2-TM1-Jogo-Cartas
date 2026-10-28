@@ -11,14 +11,14 @@ TEST_CASE("testando o botao de voltar a jogada") {
  AcaoMovimento a2{1, 2, c2, true};
    AcaoMovimento a3{2, 3, c3, false};
 
-  g.registrar_acao(a1);
-    g.registrar_acao(a2);
-  g.registrar_acao(a3);
+  g.registre_acao(a1);
+    g.registre_acao(a2);
+  g.registre_acao(a3);
 
-   CHECK(g.desfazer_ultimo_movimento());
-  CHECK(g.desfazer_ultimo_movimento());
-   CHECK(g.desfazer_ultimo_movimento());
-CHECK_FALSE(g.desfazer_ultimo_movimento());
+   CHECK(g.desfaca());
+  CHECK(g.desfaca());
+   CHECK(g.desfaca());
+CHECK_FALSE(g.desfaca());
 }
 
 TEST_CASE("zerando o historico de movimentos") {
@@ -26,7 +26,7 @@ TEST_CASE("zerando o historico de movimentos") {
   Carta c(10, Naipe::OUROS);
     AcaoMovimento a{0, 1, c, false};
 
- g.registrar_acao(a);
-   g.limpar_historico();
-  CHECK(!g.desfazer_ultimo_movimento());
+ g.registre_acao(a);
+   g.limpe();
+  CHECK(!g.desfaca());
 }

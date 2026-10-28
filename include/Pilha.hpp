@@ -2,6 +2,7 @@
 #define PILHA_HPP
 
 #include "Carta.hpp"
+#include <string>
 #include <vector>
 
 /**
@@ -19,7 +20,7 @@ public:
      * @brief Coloca uma carta no topo da pilha.
      * @param c Carta a ser inserida.
      */
-    virtual void adicionar_carta(const Carta& c);
+    virtual void add_carta(const Carta& c);
 
     /**
      * @brief Tira a carta do topo da pilha.
@@ -46,9 +47,55 @@ public:
     int get_quantidade() const;
 
     /**
+     * @brief Retorna a carta de uma posição da pilha
+     * @param indice Posição da carta.
+     * @return Referência para a carta.
+     */
+    const Carta& get_carta(int indice) const;
+
+    /**
      * @brief Remove todas as cartas da pilha.
      */
     void limpar();
+
+    /**
+     * @brief Move as qtd cartas do topo para outra pilha
+     * @param destino Pilha que vai receber as cartas
+     * @param qtd Quantidade de cartas a mover
+     */
+    void transfira_para(Pilha& destino, int qtd);
+
+    /**
+     * @brief Desvira a carta do topo
+     */
+    void esconda_topo();
+
+    /**
+     * @brief Diz se a carta pode ser colocada nessa pilha 
+     */
+    virtual bool pdp_receba(const Carta& c) const;
+
+    /**
+     * @brief Mensagem explicando por que a carta foi recusada.
+     */
+    virtual std::string satisfacao() const;
+
+    /**
+     * @brief Diz se o jogador pode tirar qtd cartas do topo dessa pilha.
+     * Na Pilha comum só dá pra tirar 1 carta, e ela precisa estar virada pra cima.
+     */
+    virtual bool pdp_retire(int qtd) const;
+
+    /**
+     * @brief Pontos que o jogador ganha
+     */
+    virtual int receba_pontos() const;
+
+    /**
+     * @brief Vira a carta do topo pra cima, se for a regra dessa pilha.
+     * @return true se alguma carta foi virada.
+     */
+    virtual bool revele_topo();
 };
 
 #endif

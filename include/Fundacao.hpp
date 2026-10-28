@@ -1,7 +1,7 @@
 #ifndef FUNDACAO_HPP
 #define FUNDACAO_HPP
 
-#include "Pilha.hpp"
+#include "PilhaFundacao.hpp"
 #include <vector>
 
 /**
@@ -9,7 +9,7 @@
  */
 class Fundacao {
 private:
-    std::vector<Pilha> _pilhas_naipe; 
+    std::vector<PilhaFundacao> _pilhas_naipe; 
 
 public:
     Fundacao();
@@ -19,19 +19,25 @@ public:
      * @param c Carta a ser inserida.
      * @return  @return true se a pilha estiver vazia e a carta for um Ás, ou se tiver o mesmo naipe e valor igual ao do topo + 1.
      */
-    bool validar_insercao(const Carta& c) const;
+    bool valide_insira(const Carta& c) const;
 
     /**
      * @brief Insere a carta na pilha correspondente.
      * @param c Carta a ser inserida.
      */
-    void inserir_carta(const Carta& c);
+    void insira_carta(const Carta& c);
 
     /**
      * @brief Verifica se as 4 fundações foram completa.
      * @return true em caso de vitória.
      */
-    bool jogo_ganho() const;
-};
+    bool gg() const;
 
+ /**
+     * @brief Acessa a pilha de fundação de um naipe
+     * @param naipe Naipe desejado.
+     */
+    Pilha& get_pilha(Naipe naipe);
+    const Pilha& get_pilha(Naipe naipe) const;
+};
 #endif
