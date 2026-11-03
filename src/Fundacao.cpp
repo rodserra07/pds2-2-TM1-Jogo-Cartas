@@ -1,12 +1,12 @@
 #include "Fundacao.hpp"
 #include <stdexcept>
 
-//uma pilha por naipe
+//uma pilha por naipe(tive que mudar a ordem que elas tavam sendo criadas pra nao dar erro)
 Fundacao::Fundacao() {
-    _pilhas_naipe.push_back(PilhaFundacao(Naipe::PAUS));
-    _pilhas_naipe.push_back(PilhaFundacao(Naipe::COPAS));
-    _pilhas_naipe.push_back(PilhaFundacao(Naipe::ESPADAS));
-    _pilhas_naipe.push_back(PilhaFundacao(Naipe::OUROS));
+_pilhas_naipe.push_back(PilhaFundacao(Naipe::COPAS));
+_pilhas_naipe.push_back(PilhaFundacao(Naipe::OUROS));
+_pilhas_naipe.push_back(PilhaFundacao(Naipe::ESPADAS));
+_pilhas_naipe.push_back(PilhaFundacao(Naipe::PAUS));
 }
 Pilha& Fundacao::get_pilha(Naipe naipe) { return _pilhas_naipe[static_cast<int>(naipe)]; }
 
