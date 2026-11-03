@@ -5,7 +5,7 @@ SRC = src/Carta.cpp src/Coluna.cpp src/Descarte.cpp src/Estoque.cpp src/Fundacao
 
 TESTES = tests/test_carta.cpp tests/test_fundacao.cpp tests/test_mover.cpp tests/test_paciencia.cpp tests/test_pilha.cpp tests/test_tableau.cpp
 
-all: $(SRC:.cpp=.o) main.o
+all: $(SRC:.cpp=.o) src/main.o
 	$(CXX) $(FLAGS) $^ -o build/paciencia
 	./build/paciencia
 
@@ -21,5 +21,5 @@ coverage: clean
 	$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f main.o src/*.o tests/*.o src/*.gcda src/*.gcno tests/*.gcda tests/*.gcno main.gcda main.gcno
+	rm -f src/*.o tests/*.o src/*.gcda src/*.gcno tests/*.gcda tests/*.gcno
 	rm -f build/paciencia build/testes data/teste*.csv

@@ -97,7 +97,7 @@ void mostre_explicacao() {
         while (true) {
             std::cout << "> ";
             if (!(std::cin >> comando)){ 
-                return; // sem entrada
+                return;
 
             }
 try{
