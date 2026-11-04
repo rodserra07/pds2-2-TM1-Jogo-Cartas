@@ -1,20 +1,8 @@
 #ifndef MOVER_HPP
 #define MOVER_HPP
 
-#include "Carta.hpp"
+#include "AcaoMovimento.hpp"
 #include <stack>
-
-/**
- * @brief Guarda cada movimento ralizado, permitindo desfazer a ação com um undo
- */
-struct AcaoMovimento {
-    int origem;
-    int destino;
-    Carta carta_movida;
-    bool carta_revelada;
-    int quantidade;
-    int pontos;
-};
 
 /**
  * @brief Gerenciador do historico

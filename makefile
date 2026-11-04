@@ -1,5 +1,5 @@
 CXX = g++
-FLAGS = -Wall -Wextra -std=c++11 -I include -I third_party
+FLAGS = -Wall -std=c++11 -I include -I third_party
 
 SRC = src/Carta.cpp src/Coluna.cpp src/Descarte.cpp src/Estoque.cpp src/Fundacao.cpp src/Mover.cpp src/Pilha.cpp src/PilhaFundacao.cpp src/Tableau.cpp src/paciencia.cpp
 
