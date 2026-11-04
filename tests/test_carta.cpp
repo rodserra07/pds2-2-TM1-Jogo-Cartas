@@ -16,13 +16,13 @@ CHECK(c2.get_cor() == Cor::PRETO);
 
 TEST_CASE("virando a carta pra ver se ela vira") {
   Carta c{7, Naipe::OUROS};
-CHECK(!c.visivel());
+CHECK(!c.get_visivel());
 
   c.set_visivel(true);
-    CHECK(c.visivel());
+    CHECK(c.get_visivel());
 
   c.set_visivel(false);
-   CHECK_FALSE(c.visivel());
+   CHECK_FALSE(c.get_visivel());
 }
 
 TEST_CASE("checa se as cores tao tipo é tipo ham tipo na-da-ve") {

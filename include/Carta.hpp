@@ -29,7 +29,7 @@ private:
     int _valor;      
     Naipe _naipe;    
     Cor _cor;         
-    bool _visivel;   
+    bool get_visivel;   
 
 public:
     /**

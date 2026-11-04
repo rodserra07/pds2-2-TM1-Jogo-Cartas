@@ -15,7 +15,7 @@ const int FUNDACAO = 9;
 
 //transforma os valores que nao tem numero no baralho em sua correspondencia
 static std::string carta_para_texto(const Carta& c) {
-    if (!c.visivel()){
+    if (!c.get_visivel()){
         return "##";
     }
 
@@ -47,7 +47,7 @@ if (c.get_naipe() == Naipe::COPAS){
         const Carta& c = pilha.get_carta(i);
         arquivo << "," << c.get_valor();
         arquivo << "," << static_cast<int>(c.get_naipe());
-        if (c.visivel()){
+        if (c.get_visivel()){
             arquivo << ",1";
         } else{
             arquivo << ",0";
@@ -364,7 +364,7 @@ void Paciencia::exiba() {
     std::cout << "=========================================\n";
 }
 
-bool Paciencia::gg() const {
+bool Paciencia::_ez() const {
     return _fundacao.gg();
 }
 

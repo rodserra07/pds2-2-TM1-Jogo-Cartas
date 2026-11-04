@@ -23,7 +23,7 @@ bool Coluna::pdp_retire(int qtd) const{
 
     //verifica se as cartas estao visiveis antes de retirar
     for (int i = primeiro; i < total; i++){
-        if (!_cartas[i].visivel()){
+        if (!_cartas[i].get_visivel()){
     return false;
         }
     }
@@ -41,7 +41,7 @@ bool Coluna::pdp_retire(int qtd) const{
 
 // revela a carta do topo da coluna
 bool Coluna::revele_topo() {
-    if (!_cartas.empty() && !_cartas.back().visivel()) {
+    if (!_cartas.empty() && !_cartas.back().get_visivel()) {
         _cartas.back().set_visivel(true);
         return true;
     }

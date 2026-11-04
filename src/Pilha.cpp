@@ -63,7 +63,7 @@ std::string Pilha::satisfacao() const {
 
 //tira so uma carta virada para cima
 bool Pilha::pdp_retire(int qtd) const {
- return qtd == 1 && !_cartas.empty() && _cartas.back().visivel();
+ return qtd == 1 && !_cartas.empty() && _cartas.back().get_visivel();
 }
 
 int Pilha::receba_pontos() const {

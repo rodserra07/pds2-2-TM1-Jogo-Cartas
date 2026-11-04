@@ -84,7 +84,7 @@ public:
     /**
      * @return true se as 4 fundações estão completas.
      */
-    bool gg() const;
+    bool gg_ez() const;
 
     int get_pontuacao() const;
     int get_tempo();

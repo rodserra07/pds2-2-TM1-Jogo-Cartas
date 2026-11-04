@@ -163,7 +163,7 @@ jogo.mover_coluna_para_fundacao(coluna - 1);
             jogo.exiba();
             std::cout << jogo.get_mensagem() << "\n";
 
-            if (jogo.gg()) {
+            if (jogo.gg_ez()) {
                 std::cout << "\n*** EBA voce ganhou oba! ***\n";
                 std::cout << "Pontuacao final: " << jogo.get_pontuacao() << "\n";
            limpe_entrada(); espere_tecla();

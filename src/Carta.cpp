@@ -22,6 +22,6 @@ Carta::Carta(int valor, Naipe naipe){
 int Carta::get_valor() const { return _valor;}
 Naipe Carta::get_naipe() const { return _naipe; }
 Cor Carta::get_cor() const{return _cor; }
-bool Carta::visivel() const { return _visivel;  }
+bool Carta::get_visivel() const { return _visivel;  }
 void Carta::set_visivel(bool visivel) {_visivel = visivel;}
 bool Carta::cor_diff(const Carta& outra) const{ return _cor != outra._cor; }
