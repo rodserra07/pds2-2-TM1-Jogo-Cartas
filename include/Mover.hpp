@@ -26,6 +26,9 @@ public:
      */
     bool desfaca();
 
+    /**
+     * @brief apaga o historico
+     */
     void limpe();
 
       /**
@@ -37,6 +40,7 @@ public:
     /**
      * @brief Olha a última ação registrada sem desfazer.
      * @pre tem_historico() == true
+     * @return referencia para a ultima ação feita
      */
     const AcaoMovimento& ver_ultima_acao() const;
 };

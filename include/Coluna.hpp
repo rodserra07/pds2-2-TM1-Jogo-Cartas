@@ -10,19 +10,30 @@
  */
 class Coluna : public Pilha {
     public:
-    bool pdp_receba(const Carta& c) const override; 
-    std::string satisfacao() const override;
+    /**
+     * @brief Diz se a carta pode ser colocada nessa pilha 
+     * @param c Carta que se quer colocar.
+     * @return true se coluna ta vazia e c for um rei, ou se c tem valor -1 que o topo e cor diferente
+     */
+    virtual bool pdp_receba(const Carta& c) const override;
 
+    /**
+     * @brief Mensagem que explica porque a carta foi recusada.
+     * @return Texto com a regra da coluna
+     */
+    virtual std::string satisfacao() const override;
 
-/**
- * @brief Permite retirar as cartas da pilha caso cumpra as restrições
- * Pode tirar as cartas em sequencia
- */
-bool pdp_retire(int qtd) const override;
+    /**
+     * @brief Diz se o jogador pode tirar qtd cartas do topo dessa pilha.
+     * @param qtd quantidade de carta
+     * @return true se qtd estiver coerente, cartas viradas pra cima em sequencia decrescente e cor alternada
+     */
+    virtual bool pdp_retire(int qtd) const override;
 
-/**
- * @brief Revela a carta do topo caso esteja pra baixo
- */
-bool revele_topo() override;
+    /**
+     * @brief Vira a carta do topo pra cima, se for a regra dessa pilha.
+     * @return true se alguma carta foi virada.
+     */
+    virtual bool revele_topo() override;
 };
 #endif

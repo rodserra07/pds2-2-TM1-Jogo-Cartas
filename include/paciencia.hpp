@@ -24,22 +24,33 @@ private:
     std::time_t _inicio;
     std::string _mensagem; 
 
+    /**
+     * @brief atualiza o empo que passou
+     */
     void att_tempo();
 
     /**
-     * Devolve a pilha em um codigo simplificado
+     * @brief Devolve a pilha em um codigo simplificado
+     * @param codide 0 a 6 pras colunas, e de 7 a 9 pra estoque descarte ou fundacao
+     * @param naipa da fundaçaão
+     * @return referencia pra pilha
+     * @throws std::out_of_range se o codigo estiver incoerenete
      */
     Pilha& pilha_por_codigo(int codigo, Naipe naipe = Naipe::COPAS);
 
     /**
-     * Move as carta eu acho
+     * @brief Move as carta eu acho
+     * @param cod_origem codigo pilha origem
+     * @param cod_destino codigo pilha destino
+     * @param qtd quantidade de cartas a mover
+     * @return True se o o movimento foi feito
      */
     bool mover(int cod_origem, int cod_destino, int qtd);
 public:
     Paciencia();
 
     /**
-     * @brief Inicia o baralho, embaralha ele e distribui as cartinha
+     * @brief Inicia o baralho, embaralha ele e distribui as cartinha, reseta os ponto e o tempo
      */
     void iniciar_nova_partida();
 
@@ -51,22 +62,30 @@ public:
 
      /**
      * @brief Move carta de um tableau pra outro tableau
+     * @param origem coluna de origem
+     * @param destino coluna de destino
+     * @param qtd quantidade de cartas a mover
      * @return true se o movimento for valido
      */
     bool mover_coluna_para_coluna(int origem, int destino, int qtd);
 
     /**
      * @brief Move a carta do topo do descarte para uma coluna.
+     * @param coluna Coluna de destino
+     * @return true se foi feito o movimento
      */
     bool mover_descarte_para_coluna(int coluna);
 
     /**
-     * @brief Move a carta do topo de uma coluna para a fundação.
+     * @brief Move a carta do topo do descarte para a fundação
+     * @param coluna Coluna de origem
+     * @return true se foi feito o movimento
      */
     bool mover_coluna_para_fundacao(int coluna);
 
     /**
      * @brief Move a carta do topo do descarte para a fundação.
+     * @return true se foi feito o movimento
      */
     bool mover_descarte_para_fundacao();
 
@@ -82,12 +101,28 @@ public:
     void exiba();
 
     /**
-     * @return true se as 4 fundações estão completas.
+     * @brief true se as 4 fundações estão completas.
+     * @return true se as 4 fundação tao completas
      */
     bool gg_ez() const;
 
+
+    /**
+     * @brief retorna a pontuação
+     * @return pontos da partida
+     */
     int get_pontuacao() const;
+
+    /**
+     * @brief atualiza e retona o tempo
+     * @return tempo passado
+     */
     int get_tempo();
+
+        /**
+     * @brief retorna a mensagem da ultima jogada
+     * @return texto da mensgem
+     */
     const std::string& get_mensagem() const;
 
     /**

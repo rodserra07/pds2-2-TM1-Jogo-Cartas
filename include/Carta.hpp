@@ -4,7 +4,9 @@
 #include <string>
 
 /**
- * @brief Tipos de naipe.
+ * @brief Os naipes do baralho.
+ *
+ *A ordem é usada como indice na fundação entao nao pode ser alterada
  */
 enum class Naipe {
     COPAS,
@@ -14,7 +16,7 @@ enum class Naipe {
 };
 
 /**
- * @brief Tipos de cor.
+ * @brief cor das cartas.
  */
 enum class Cor {
     VERMELHO,
@@ -23,6 +25,8 @@ enum class Cor {
 
 /**
  * @brief Classe que cria os objetos carta, formando as 52 cartas do baralho.
+ *
+ * O baralho tem 52 cartas, 13 de cada naipe
  */
 class Carta {
 private:
@@ -34,15 +38,35 @@ private:
 public:
     /**
      * @brief Construtor da carta.
-     * @param valor Valor numérico de 1 a 13.
-     * @param naipe Naipe da carta.
+     * @param Valor numérico de 1 a 13.
+     * @param Naipe da carta.
+     * @throws std::invalid_argument se o valor nao estiver entre 1-13
      */
     Carta(int valor, Naipe naipe);
 
+     /**
+     * @brief retorna o valor da carta
+     * @return Valor de 1 a 13
+     */
     int get_valor() const;
+
+    /**
+     * @brief retorna o naipe da carta
+     * @return naipe da carta
+     */
     Naipe get_naipe() const;
+
+    /**
+     * @brief retorna acor da carta
+     * @return cor da carta
+     */
     Cor get_cor() const;
-    bool visivel() const;
+
+    /**
+     * @brief olha se a carta esta virada pra cima o nao
+     * @return True se estiver virada pra cima
+     */
+    bool get_visivel() const;
 
     /**
      * @brief Vira a carta de cima para baixo e vice versa

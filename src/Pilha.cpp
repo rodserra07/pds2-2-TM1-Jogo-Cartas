@@ -35,6 +35,9 @@ void Pilha::transfira_para(Pilha& destino, int qtd) {
     if (&destino == this){
         throw std::invalid_argument("origem e destino sao a mesma pilha");
     }
+     if (qtd < 1 || qtd > get_quantidade()){
+        throw std::invalid_argument("quantidade de cartas invalida para a transferencia");
+    }
 
     //retira as cartas de forma inversa e as coloca de traz pra frente
    std::vector<Carta> temporarias;
