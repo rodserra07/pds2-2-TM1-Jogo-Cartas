@@ -7,6 +7,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <vector>
+#include <set>
 
 //correspondente em codigo das pilhas
 const int ESTOQUE = 7;
@@ -65,7 +66,7 @@ static void trocar_virgulas(std::string& linha) {
     }
 }
     // le a linha do arquivo e coloca as cartas de acordo
-    static void ler_pilha(std::ifstream& arquivo, Pilha& pilha, int& total) {
+    static void ler_pilha(std::ifstream& arquivo, Pilha& pilha, int& total, std::set<int>& vistas) {
     std::string linha;
     if (!std::getline(arquivo, linha)){
         throw std::runtime_error("Linhas do arquivo incoerentes");
@@ -86,9 +87,17 @@ std::istringstream leitor(linha);
             throw std::runtime_error("carta incompleta");
         }
         // verifica se os elemntos da carta estao dentro do coerente
-         if (valor < 1 || valor > 13 || naipe < 0 || naipe > 3){
+        if (valor < 1 || valor > 13 || naipe < 0 || naipe > 3){
             throw std::runtime_error("carta com valor ou naipe incoerente");
-        } Carta c(valor, static_cast<Naipe>(naipe));
+}
+        if (visivel != 0 && visivel != 1){
+            throw std::runtime_error("carta com visibilidade incoerente");
+}
+        // transforma cada objeto carta em um numero unico e verifica se ja foi criado, evitando repetições na hora do load
+        if (!vistas.insert(naipe * 100 + valor).second){
+         throw std::runtime_error("carta repetida");
+}
+Carta c(valor, static_cast<Naipe>(naipe));
         c.set_visivel(visivel == 1);
         pilha.add_carta(c); 
     }
@@ -417,6 +426,7 @@ void Paciencia::load(const std::string& caminho_arquivo) {
     int nova_pontuacao = 0;
     int novo_tempo = 0;
     int total = 0;
+    std::set<int> vistas;
 
     //verifica se esta tudo certo no arquivo a ser lido
     try{
@@ -431,13 +441,13 @@ void Paciencia::load(const std::string& caminho_arquivo) {
             throw std::runtime_error("pontuacao ou tempo invalidos");
         }
 
-        ler_pilha(arquivo, novo_estoque, total);
-        ler_pilha(arquivo, novo_descarte, total);
+        ler_pilha(arquivo, novo_estoque, total, vistas);
+        ler_pilha(arquivo, novo_descarte, total, vistas);
         for (int i = 0; i < 4; i++){
             ler_pilha(arquivo, nova_fundacao.get_pilha(static_cast<Naipe>(i)), total);
         }
         for (int i = 0; i < 7; i++){
-            ler_pilha(arquivo, novo_tableau.get_coluna(i), total);
+            ler_pilha(arquivo, novo_tableau.get_coluna(i), total, vistas);
         }
          if (total != 52){
             throw std::runtime_error("o baralho nao tem 52 cartas");
