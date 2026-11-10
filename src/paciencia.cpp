@@ -373,7 +373,7 @@ void Paciencia::exiba() {
     std::cout << "=========================================\n";
 }
 
-bool Paciencia::_ez() const {
+bool Paciencia::gg_ez() const {
     return _fundacao.gg();
 }
 
@@ -444,7 +444,7 @@ void Paciencia::load(const std::string& caminho_arquivo) {
         ler_pilha(arquivo, novo_estoque, total, vistas);
         ler_pilha(arquivo, novo_descarte, total, vistas);
         for (int i = 0; i < 4; i++){
-            ler_pilha(arquivo, nova_fundacao.get_pilha(static_cast<Naipe>(i)), total);
+            ler_pilha(arquivo, nova_fundacao.get_pilha(static_cast<Naipe>(i)), total, vistas);
         }
         for (int i = 0; i < 7; i++){
             ler_pilha(arquivo, novo_tableau.get_coluna(i), total, vistas);

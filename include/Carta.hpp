@@ -33,7 +33,7 @@ private:
     int _valor;      
     Naipe _naipe;    
     Cor _cor;         
-    bool get_visivel;   
+    bool _visivel;   
 
 public:
     /**
