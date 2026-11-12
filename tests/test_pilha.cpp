@@ -34,3 +34,9 @@ CHECK(p.get_quantidade() == 3);
   CHECK(p.esta_vazia());
 CHECK(p.get_quantidade() == 0);
 }
+
+TEST_CASE("tentando tirar carta de pilha vazia") {
+    Pilha p;
+    CHECK_THROWS(p.remover_topo());
+    CHECK_THROWS(p.ver_topo());
+}

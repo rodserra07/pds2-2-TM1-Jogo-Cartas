@@ -27,3 +27,18 @@ TEST_CASE("mexendo nas colunas diretamente") {
    CHECK(!t.get_coluna(1).esta_vazia());
   CHECK(t.get_coluna(1).get_quantidade() == 1);
 }
+
+TEST_CASE("passando carta de uma coluna pra outra") {
+    Tableau t;
+    Carta rei(13, Naipe::PAUS);
+    t.get_coluna(0).add_carta(rei);
+
+    t.mova_cartas(0, 1, 1);
+    CHECK(t.get_coluna(0).esta_vazia());
+    CHECK(t.get_coluna(1).get_quantidade() == 1);
+}
+
+TEST_CASE("coluna que nao existe") {
+    Tableau t;
+    CHECK_THROWS(t.get_coluna(7));
+}
