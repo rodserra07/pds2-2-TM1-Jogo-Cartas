@@ -14,4 +14,33 @@ Nosso grupo se questionou muito sobre qual jogo a gente pegaria pra fazer, prime
 * `design/`: Documentação de requisitos (User Stories e Cartões CRC).
 * `include/`: Arquivos de cabeçalho (`.hpp`) com definições das classes e documentação Doxygen.
 * `src/`: Implementação dos métodos das classes (`.cpp`).
-* `tests/`: Testes unitários do sistema.
+* `tests/`: Testes unitários do sistema (doctest).
+* `third_party/`: Biblioteca doctest.
+* `data/`: Arquivo de salvamento da partida (`partida.csv`).
+* `build/`: Executáveis gerados na compilação.
+* `makefile`: Regras de compilação, testes e cobertura.
+
+## Como Compilar e Executar
+Requisitos: g++ com suporte a C++11 e make (para cobertura, também o gcovr).
+
+* `make`: compila e executa o jogo.
+* `make testes`: compila e executa os testes unitários.
+* `make coverage`: executa os testes e mostra a cobertura de código.
+* `make clean`: apaga os arquivos compilados.
+
+## Como Jogar
+| Comando | Ação |
+|---|---|
+| `c` | Comprar carta do estoque (ou devolver o descarte pro estoque) |
+| `m O D` | Mover 1 carta da coluna O para a coluna D |
+| `mm O D N` | Mover N cartas da coluna O para a coluna D |
+| `d N` | Mover o topo do descarte para a coluna N |
+| `f N` | Mover o topo da coluna N para a fundação |
+| `df` | Mover o topo do descarte para a fundação |
+| `u` | Desfazer a última jogada |
+| `s` / `l` | Salvar / carregar a partida |
+| `n` | Nova partida |
+| `h` | Ajuda |
+| `q` | Voltar pro menu |
+
+As colunas vão de 1 a 7.
