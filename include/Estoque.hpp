@@ -1,23 +1,24 @@
 #ifndef ESTOQUE_HPP
-#define ESTOQUE_HPP 
+#define ESTOQUE_HPP
 #include "Pilha.hpp"
 
 /**
  * @brief Pilha de compra
  */
-class Estoque : public Pilha {
-    public:
+class Estoque : public Pilha
+{
+public:
     /**
      * @brief coloca a carta no topo do estoque
      * @param c Carta que se quer colocar.
      */
-    void add_carta(const Carta& c) override;
-/**
-     * @brief Diz se a carta pode ser colocada nessa pilha 
+    void add_carta(const Carta &c) override;
+    /**
+     * @brief Diz se a carta pode ser colocada nessa pilha
      * @param c Carta que se quer colocar.
      * @return sempre false
      */
-    virtual bool pdp_receba(const Carta& c) const override;
+    virtual bool pdp_receba(const Carta &c) const override;
 
     /**
      * @brief Mensagem que explica porque a carta foi recusada.

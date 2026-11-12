@@ -1,13 +1,13 @@
 CXX = g++
 FLAGS = -Wall -std=c++11 -I include -I third_party
 
-SRC = src/Carta.cpp src/Coluna.cpp src/Descarte.cpp src/Estoque.cpp src/Fundacao.cpp src/Mover.cpp src/Pilha.cpp src/PilhaFundacao.cpp src/Tableau.cpp src/paciencia.cpp
+SRC = src/Carta.cpp src/Coluna.cpp src/Descarte.cpp src/Estoque.cpp src/Fundacao.cpp src/Historico.cpp src/Pilha.cpp src/PilhaFundacao.cpp src/Tableau.cpp src/Paciencia.cpp
 
-TESTES = tests/test_carta.cpp tests/test_fundacao.cpp tests/test_mover.cpp tests/test_paciencia.cpp tests/test_pilha.cpp tests/test_tableau.cpp tests/test_coluna.cpp tests/test_estoque_descarte.cpp tests/test_jogadas.cpp
+TESTES = tests/test_carta.cpp tests/test_fundacao.cpp tests/test_historico.cpp tests/test_paciencia.cpp tests/test_pilha.cpp tests/test_tableau.cpp tests/test_coluna.cpp tests/test_estoque_descarte.cpp tests/test_jogadas.cpp tests/test_regras.cpp
 
 all: $(SRC:.cpp=.o) src/main.o
-	$(CXX) $(FLAGS) $^ -o build/paciencia
-	./build/paciencia
+	$(CXX) $(FLAGS) $^ -o build/Paciencia
+	./build/Paciencia
 
 testes: $(SRC:.cpp=.o) $(TESTES:.cpp=.o)
 	$(CXX) $(FLAGS) $^ -o build/testes
@@ -22,4 +22,10 @@ coverage: clean
 
 clean:
 	rm -f src/*.o tests/*.o src/*.gcda src/*.gcno tests/*.gcda tests/*.gcno
-	rm -f build/paciencia build/testes data/teste*.csv
+	rm -f build/Paciencia build/testes data/teste*.csv
+
+.PHONY: all testes coverage doc clean
+
+doc:
+	mkdir -p docs
+	doxygen Doxyfile

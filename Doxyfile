@@ -1,0 +1,11 @@
+PROJECT_NAME         = "Paciencia"
+OUTPUT_DIRECTORY     = docs
+INPUT                = include
+FILE_PATTERNS        = *.hpp
+OUTPUT_LANGUAGE      = Brazilian
+EXTRACT_ALL          = NO
+EXTRACT_PRIVATE      = YES
+WARN_IF_UNDOCUMENTED = YES
+WARN_IF_DOC_ERROR    = YES
+WARN_LOGFILE         = docs/warnings.log
+GENERATE_LATEX       = NO

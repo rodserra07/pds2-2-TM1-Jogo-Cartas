@@ -3,50 +3,55 @@
 
 #include "Tableau.hpp"
 #include "Fundacao.hpp"
-#include "Mover.hpp"
+#include "Historico.hpp"
 #include "Estoque.hpp"
 #include "Descarte.hpp"
 #include <string>
 #include <ctime>
 
 /**
- * @brief Classe que vai sustentar todo o fluxo da paciencia 
+ * @brief Classe que vai sustentar todo o fluxo da paciencia
  */
-class Paciencia {
+class Paciencia
+{
 private:
-    Tableau _tableau;
-    Fundacao _fundacao;
-    Estoque _estoque;
-    Descarte _descarte;
-    GerenciadorMovimento _gerenciador_undo;
-    int _pontuacao;
-    int _tempo_decorrido;
-    std::time_t _inicio;
-    std::string _mensagem; 
+    Tableau _tableau;      ///< 7 colunas do tabuleiro
+    Fundacao _fundacao;    ///< 4 pilhas de fundação
+    Estoque _estoque;      ///< pilha de estoque
+    Descarte _descarte;    ///< pilha de descarte
+    Historico _historico;  ///< pilha de ações, permitindo desfazer movimentos
+    int _pontuacao;        ///< pontuação do jogador
+    int _tempo_decorrido;  ///< tempo decorrido desde o início da partida
+    std::time_t _inicio;   ///< momento em que a partida começou
+    std::string _mensagem; ///< mensagem da última jogada seja de erro ou vitoria
 
     /**
-     * @brief atualiza o empo que passou
+     * @brief atualiza o tempo que passou
      */
     void att_tempo();
 
     /**
      * @brief Devolve a pilha em um codigo simplificado
-     * @param codide 0 a 6 pras colunas, e de 7 a 9 pra estoque descarte ou fundacao
-     * @param naipa da fundaçaão
+     * @param codigo 0 a 6 pras colunas, e de 7 a 9 pra estoque descarte ou fundacao
+     * @param naipe naipe da fundaçaão
      * @return referencia pra pilha
      * @throws std::out_of_range se o codigo estiver incoerenete
      */
-    Pilha& pilha_por_codigo(int codigo, Naipe naipe = Naipe::COPAS);
+    Pilha &pilha_por_codigo(int codigo, Naipe naipe = Naipe::COPAS);
 
     /**
-     * @brief Move as carta eu acho
+     * @brief Move as carta
      * @param cod_origem codigo pilha origem
      * @param cod_destino codigo pilha destino
      * @param qtd quantidade de cartas a mover
      * @return True se o o movimento foi feito
      */
     bool mover(int cod_origem, int cod_destino, int qtd);
+
 public:
+    /**
+     * @brief Construtor da paciencia
+     */
     Paciencia();
 
     /**
@@ -59,9 +64,8 @@ public:
      */
     void comprar_carta_estoque();
 
-
-     /**
-     * @brief Move carta de um tableau pra outro tableau
+    /**
+     * @brief Move cartas de um tableau pra outro tableau
      * @param origem coluna de origem
      * @param destino coluna de destino
      * @param qtd quantidade de cartas a mover
@@ -77,7 +81,7 @@ public:
     bool mover_descarte_para_coluna(int coluna);
 
     /**
-     * @brief Move a carta do topo do descarte para a fundação
+     * @brief Move a carta do topo da coluna para a fundação.
      * @param coluna Coluna de origem
      * @return true se foi feito o movimento
      */
@@ -106,7 +110,6 @@ public:
      */
     bool gg_ez() const;
 
-
     /**
      * @brief retorna a pontuação
      * @return pontos da partida
@@ -114,28 +117,22 @@ public:
     int get_pontuacao() const;
 
     /**
-     * @brief atualiza e retona o tempo
-     * @return tempo passado
-     */
-    int get_tempo();
-
-        /**
      * @brief retorna a mensagem da ultima jogada
-     * @return texto da mensgem
+     * @return texto da mensagem
      */
-    const std::string& get_mensagem() const;
+    const std::string &get_mensagem() const;
 
     /**
      * @brief Salva todos os elementos necessarios para retomar o jogo em um arquivo .csv
      * @param caminho_arquivo (padrão: "data/partida.csv").
      */
-    void save(const std::string& caminho_arquivo);
+    void save(const std::string &caminho_arquivo);
 
     /**
      * @brief Carrega todas as informações do .csv retomando a partida de onde parou.
      * @param caminho_arquivo (padrão: "data/partida.csv").
      */
-    void load(const std::string& caminho_arquivo);
+    void load(const std::string &caminho_arquivo);
 };
 
 #endif

@@ -8,37 +8,44 @@
 /**
  * @brief Manipular as pilhas de cartas.
  *
- * por padrão acerta qualquer carta e so deixa retirar uma carta
+ * por padrão aceita qualquer carta e so deixa retirar uma carta
  * Coluna, Estoque, Descarte e PilhaFundacao sobrescrevem os metodos virtuais(polimorfismo)
  */
-class Pilha {
+class Pilha
+{
 protected:
-    std::vector<Carta> _cartas; 
+    std::vector<Carta> _cartas; ///< vetor de cartas que compoem a pilha
 
 public:
+    /**
+     * @brief Construtor da pilha
+     */
     Pilha() = default;
+    /**
+     * @brief Destrutor da pilha
+     */
     virtual ~Pilha() = default;
 
     /**
      * @brief Coloca uma carta no topo da pilha.
-     * pode(spoiler:vai) ser sobreescrita pelas classes filhas
+     * pode ser sobreescrita pelas classes filhas
      * @param c Carta a ser inserida.
      */
-    virtual void add_carta(const Carta& c);
+    virtual void add_carta(const Carta &c);
 
     /**
      * @brief Tira a carta do topo da pilha.
      * @return Carta removida do topo.
-     * @throws std::out_of_range se a pilha ta fazia
+     * @throws std::out_of_range se a pilha ta vazia
      */
     Carta remover_topo();
 
     /**
      * @brief Retorna uma referência para a carta do topo sem removê-la.
      * @return Referência da carta do topo.
-     * @throws std::out_of_range se a pilha ta fazia
+     * @throws std::out_of_range se a pilha ta vazia
      */
-    const Carta& ver_topo() const;
+    const Carta &ver_topo() const;
 
     /**
      * @brief Verifica se a pilha está vazia.
@@ -58,7 +65,7 @@ public:
      * @return Referência para a carta.
      * @throws std::out_of_range se o indice tiver errado
      */
-    const Carta& get_carta(int indice) const;
+    const Carta &get_carta(int indice) const;
 
     /**
      * @brief Remove todas as cartas da pilha.
@@ -70,9 +77,9 @@ public:
      * @param destino Pilha que vai receber as cartas
      * @param qtd Quantidade de cartas a mover
      * @throws std::invalid_argument se destino for a própria pilha, ou se qtd  for menor que 1 ou maior que a quantidade de cartas da pilha.
-     *        
+     *
      */
-    void transfira_para(Pilha& destino, int qtd);
+    void transfira_para(Pilha &destino, int qtd);
 
     /**
      * @brief Desvira a carta do topo
@@ -80,11 +87,11 @@ public:
     void esconda_topo();
 
     /**
-     * @brief Diz se a carta pode ser colocada nessa pilha 
+     * @brief Diz se a carta pode ser colocada nessa pilha
      * @param c Carta que se quer colocar.
      * @return true se a pilha aceita a carta
      */
-    virtual bool pdp_receba(const Carta& c) const;
+    virtual bool pdp_receba(const Carta &c) const;
 
     /**
      * @brief Mensagem que explica porque a carta foi recusada.
@@ -95,7 +102,7 @@ public:
     /**
      * @brief Diz se o jogador pode tirar qtd cartas do topo dessa pilha.
      * @param qtd quantidade de carta
-     * @return true se ta podendo retira
+     * @return true se a carta pode sair
      */
     virtual bool pdp_retire(int qtd) const;
 

@@ -8,14 +8,15 @@
  * Aceita ou recusa uma carta dependendo se ela cumpre os pre-requisitos
  * Dá pra mover um grupo de cartas.
  */
-class Coluna : public Pilha {
-    public:
+class Coluna : public Pilha
+{
+public:
     /**
-     * @brief Diz se a carta pode ser colocada nessa pilha 
+     * @brief Diz se a carta pode ser colocada nessa pilha
      * @param c Carta que se quer colocar.
-     * @return true se coluna ta vazia e c for um rei, ou se c tem valor -1 que o topo e cor diferente
+     * @return true se coluna ta vazia e c for um rei, ou se c tem valor uma unidade menor que o topo e cor diferente
      */
-    virtual bool pdp_receba(const Carta& c) const override;
+    virtual bool pdp_receba(const Carta &c) const override;
 
     /**
      * @brief Mensagem que explica porque a carta foi recusada.

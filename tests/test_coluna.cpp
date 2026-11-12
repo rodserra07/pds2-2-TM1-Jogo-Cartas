@@ -1,7 +1,8 @@
 #include "doctest.h"
 #include "Coluna.hpp"
 
-TEST_CASE("mensagem quando a coluna recusa a carta") {
+TEST_CASE("mensagem quando a coluna recusa a carta")
+{
     Coluna c;
     CHECK(c.satisfacao() == "A coluna esta vazia, precisa de um rei para inicia-la");
 
@@ -10,11 +11,12 @@ TEST_CASE("mensagem quando a coluna recusa a carta") {
     CHECK(c.satisfacao() == "A carta precisa de um valor uma unidade inferior ao topo e de cor oposta");
 }
 
-TEST_CASE("virando a carta de cima da coluna") {
+TEST_CASE("virando a carta de cima da coluna")
+{
     Coluna c;
     Carta carta(5, Naipe::COPAS);
     c.add_carta(carta);
 
-    CHECK(c.revele_topo());  // a carta tava virada pra baixo
-    CHECK(c.pdp_retire(1));  // agora da pra tirar
+    CHECK(c.revele_topo());
+    CHECK(c.pdp_retire(1));
 }
