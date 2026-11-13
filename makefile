@@ -7,6 +7,8 @@ TESTES = tests/test_carta.cpp tests/test_fundacao.cpp tests/test_historico.cpp t
 
 all: $(SRC:.cpp=.o) src/main.o
 	$(CXX) $(FLAGS) $^ -o build/Paciencia
+
+run: all
 	./build/Paciencia
 
 testes: $(SRC:.cpp=.o) $(TESTES:.cpp=.o)
@@ -24,7 +26,7 @@ clean:
 	rm -f src/*.o tests/*.o src/*.gcda src/*.gcno tests/*.gcda tests/*.gcno
 	rm -f build/Paciencia build/testes data/teste*.csv
 
-.PHONY: all testes coverage doc clean
+.PHONY: all run testes coverage doc clean
 
 doc:
 	mkdir -p docs

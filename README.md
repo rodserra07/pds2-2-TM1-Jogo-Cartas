@@ -21,13 +21,13 @@ Nosso grupo se questionou muito sobre qual jogo a gente pegaria pra fazer, prime
 * `makefile`: Regras de compilação, testes e cobertura.
 
 ## Como Compilar e Executar
-Requisitos: g++ com suporte a C++11 e make (para cobertura, também o gcovr).
+Requisitos: g++ com suporte a C++11 e make (para cobertura, também o gcovr; para a documentação, o doxygen).
 
-* `make`: compila e executa o jogo.
+* `make`: compila o jogo.
+* `make run`: compila e executa o jogo.
 * `make testes`: compila e executa os testes unitários.
 * `make coverage`: executa os testes e mostra a cobertura de código.
 * `make clean`: apaga os arquivos compilados.
-
 * `make doc`: gera a documentação Doxygen
 
 ## Como Jogar
